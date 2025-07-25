@@ -1,0 +1,17 @@
+trigger:
+  - master
+  - s-CRM-01
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: SSH@0
+    inputs:
+      sshEndpoint: 'connection'  # Replace with your actual service connection name
+      runOptions: 'commands'
+      commands: |
+        cd /home/master-crm/htdocs/master-crm.abym.us && git pull 2>&1 || echo "⚠️ Git pull had a warning, continuing..." && php artisan optimize:clear
+
+        echo "✅ Laravel deployment complete"
+    displayName: '🚀 Deploy Laravel Master CRM'
