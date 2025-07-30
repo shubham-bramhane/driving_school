@@ -66,7 +66,7 @@
                 @foreach($details as $key => $value)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$value->user_id ? $value->user->name : ''}}</td>
+                  <td>{{ isset($value->user->name) ? $value->user->name : '' }}</td>
                     <td>{{$value->application_no }}</td>
                     <td>{{($value->user_id && $value->user->date_of_birth) ? date('d-m-Y', strtotime($value->user->date_of_birth)) : ''}}</td>
                     <td>{{($value->application_date) ? date('d-m-Y', strtotime($value->application_date)) : ''}}</td>

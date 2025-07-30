@@ -60,7 +60,7 @@
             @foreach($details as $key => $value)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$value->user_id ? $value->user->name : ''}}</td>
+              <td>{{ isset($value->user->name) ? $value->user->name : '' }}</td>
                 <td>{{ $value->invoice_number ?? '' }}</td>
                 <td>{{ $value->invoice_date ? date('d-m-Y', strtotime($value->invoice_date)) : '' }}</td>
                 <td>{{ $value->invoice_amount ?? '' }}</td>
